@@ -74,7 +74,7 @@ class s3_deprecated:
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Check if a current snapshot exists')
+    parser = argparse.ArgumentParser(description='Check useless s3 directories')
     parser.add_argument('--debug',  '-d',   help='Set verbosity level', default=0, type=int)
     parser.add_argument('--profile', '-p', help='Pass AWS profile name', default='default')
     parser.add_argument('--region', '-r',   help='Set AWS region', default='eu-west-1')
