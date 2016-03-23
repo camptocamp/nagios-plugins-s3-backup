@@ -14,6 +14,7 @@ class s3_deprecated:
         self.__profile = args.profile
         self.__region  = args.region
         self.__bucket  = args.bucket
+        self.__filters = args.filters.split(',')
 
         session = boto3.session.Session(
                 profile_name = self.__profile,
@@ -60,7 +61,8 @@ class s3_deprecated:
                 Delimiter='/',
                 )
         for i in listing['CommonPrefixes']:
-            self.__dirs.append(os.path.dirname(i['Prefix']))
+            if os.path.dirname(i['Prefix']) not in self.__filters:
+                self.__dirs.append(os.path.dirname(i['Prefix']))
 
     def __check(self):
         '''
@@ -79,6 +81,7 @@ if __name__ == '__main__':
     parser.add_argument('--profile', '-p', help='Pass AWS profile name', default='default')
     parser.add_argument('--region', '-r',   help='Set AWS region', default='eu-west-1')
     parser.add_argument('--bucket', '-b', help='Bucket name')
+    parser.add_argument('--filters', '-F', help='Filter out directories; directory1,directory2,directory3,..', default='')
 
     args = parser.parse_args()
 
