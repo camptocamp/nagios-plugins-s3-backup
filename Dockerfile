@@ -9,4 +9,5 @@ RUN mkdir ~/.aws
 
 COPY check_deprecated_backups.py .
 
-CMD [ "python", "./check_deprecated_backups.py", "--exporter", "-p", "nagios-checker", "-b", "bgdi-backup" , "--exporter"]
+CMD [ "python", "./check_deprecated_backups.py", "--exporter", "-p", "default", "-b", "bgdi-backup" ]
+EXPOSE 8080
