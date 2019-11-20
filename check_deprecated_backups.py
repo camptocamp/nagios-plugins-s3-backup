@@ -18,7 +18,7 @@ class s3_deprecated:
         self.__bucket  = args.bucket
         self.__filters = args.filters.split(',')
         self.__connect_and_check()
-        self.__g = Gauge('deprecated_backups', 'Deprecated backu directories found')
+        self.__g = Gauge('deprecated_backups', 'Deprecated backups directories found')
 
     def __connect_and_check(self):
 
